@@ -12,3 +12,13 @@ resource "auth0_resource_server" "ndsq_api" {
   token_lifetime                                  = 8600
   skip_consent_for_verifiable_first_party_clients = true
 }
+
+resource "auth0_client" "ndsq_app" {
+  name = "NDSquared Application (Managed by Terraform)"
+}
+
+resource "auth0_client_grant" "ndsq_client_grants" {
+  client_id = auth0_client.ndsq_app.id
+  audience  = auth0_resource_server.ndsq_api.identifier
+  scope     = ["read:connectfour"]
+}
