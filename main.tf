@@ -17,10 +17,10 @@ resource "auth0_client" "ndsq_app" {
   name     = "NDSquared Application (Managed by Terraform)"
   app_type = "non_interactive"
   allowed_origins = [
-    "http:localhost:3000",
-    "http:localhost:8000",
-    "https:ndsquared.net",
-    "https:www.ndsquared.net",
+    "http://localhost:3000",
+    "http://localhost:8000",
+    "https://ndsquared.net",
+    "https://www.ndsquared.net",
   ]
 }
 
