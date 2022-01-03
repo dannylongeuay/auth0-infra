@@ -8,13 +8,14 @@ resource "auth0_resource_server" "ndsq_api" {
     description = "Read connect four endpoint"
   }
 
-  allow_offline_access                            = true
+  enforce_policies                                = true
   token_lifetime                                  = 8600
   skip_consent_for_verifiable_first_party_clients = true
 }
 
 resource "auth0_client" "ndsq_app" {
-  name = "NDSquared Application (Managed by Terraform)"
+  name     = "NDSquared Application (Managed by Terraform)"
+  app_type = "non_interactive"
 }
 
 resource "auth0_client_grant" "ndsq_client_grants" {
